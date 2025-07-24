@@ -2,169 +2,91 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Para mi arrocito</title>
+  <title>Reproductor de Música con Gatito</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .kinopio-embed {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-    }
-
-    iframe {
-      height: 100%;
-      width: 100%;
-      border: none;
-    }
-
-    .mensaje-amor {
+    /* Estilo básico para el reproductor */
+    .reproductor {
       position: fixed;
-      top: 20%;
+      bottom: 20px;
       left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      background: linear-gradient(135deg, #ffe6f0, #fff);
-      color: #000;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      font-size: 2.3em;
-      padding: 30px 40px;
-      border: 4px solid #ff69b4;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-      z-index: 999;
-      animation: fadeOut 2s ease-out 5s forwards;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    /* Estilo para el botón de música */
-    .boton-musica {
-      padding: 12px 18px;
-      background: #007bff;  /* Color azul */
-      border: 2px solid #0056b3;
-      color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-      z-index: 1000;
-      position: fixed;
-      bottom: 20px;  /* Poner en la parte inferior */
-      left: 20px;  /* Alineado a la izquierda */
-    }
-
-    /* Efecto en escritorio con hover */
-    .boton-musica:hover {
-      transform: scale(1.2);  /* Aumenta el tamaño del botón */
-      background-color: #0056b3;  /* Cambia el fondo a un azul más oscuro */
-    }
-
-    /* Efecto en dispositivos móviles cuando el botón es tocado */
-    .boton-musica:active {
-      transform: scale(1.1);  /* Aumenta ligeramente el tamaño */
-      background-color: #0056b3;  /* Cambia el fondo */
-      color: white;  /* Cambia el color del texto */
-    }
-
-    /* Estilo para el botón de playlist */
-    .boton-playlist {
-      position: fixed;
-      bottom: 20px;  /* En la parte inferior */
-      right: 20px;  /* Alineado a la derecha */
-      padding: 12px 18px;
+      transform: translateX(-50%);
       background: #fff;
-      border: 2px solid #ff69b4;
-      color: #ff69b4;
       border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      padding: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       z-index: 1000;
+      width: 300px;
     }
 
-    /* Efecto hover para el botón de la playlist */
-    .boton-playlist:hover {
+    .reproductor audio {
+      width: 100%;  /* Asegura que el reproductor ocupe todo el ancho */
+      border: none;
+      border-radius: 10px;
+    }
+
+    .boton-play {
+      position: relative;
+      padding: 12px 18px;
       background-color: #ff69b4;
       color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 1;  /* Asegura que el botón esté por encima */
+      width: 100%;
+      margin-top: 10px;
     }
 
-    .emoji {
-      position: fixed;
-      font-size: 2rem;
-      pointer-events: none;
-      animation: floatUp 10s linear forwards, fadeOut 10s forwards;
-      z-index: 998;
+    .boton-play:hover {
+      background-color: #ff3385;
     }
 
-    @keyframes floatUp {
-      from { transform: translateY(100vh); opacity: 1; }
-      to   { transform: translateY(-20vh); opacity: 0; }
+    /* Imagen del gatito encima del botón */
+    .gatito {
+      position: absolute;
+      top: -20px;  /* Ajusta la posición vertical */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px; /* Tamaño del gatito */
+      z-index: 2; /* Asegura que el gatito quede encima del botón */
     }
 
   </style>
 </head>
 <body>
 
-  <div class="mensaje-amor">
-    Para mi arrocito, mi amor, mi seyora, mi reina, mi todo
+  <div class="reproductor">
+    <audio id="musica" controls>
+      <source src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <!-- Imagen del gatito encima del botón -->
+    <img class="gatito" src="https://raw.githubusercontent.com/Lyhuwu/Feliz-aniversario-/main/uwaaa.png" alt="Gatito">
+
+    <!-- Botón de música -->
+    <button id="botonMusica" class="boton-play">🎵 Reproducir música</button>
   </div>
-
-  <div class="kinopio-embed">
-    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=92"></iframe>
-  </div>
-
-  <!-- ✅ AUDIO CON RUTA CORRECTA -->
-  <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" loop></audio>
-
-  <!-- Botón de música -->
-  <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
-
-  <!-- Botón para la playlist de YouTube -->
-  <a href="https://youtube.com/playlist?list=PL8XJYWxEU8h_twQ8v3pUdNLdPhLtG53Ld&si=gJdB6Ci00JJh2-Ej" target="_blank">
-    <button class="boton-playlist">Para ti mi vida preciosa<3</button>
-  </a>
 
   <script>
-    const musica = document.getElementById("musica");
-    const boton = document.getElementById("botonMusica");
+    const musica = document.getElementById('musica');
+    const botonPlay = document.querySelector('.boton-play');
 
-    boton.addEventListener("click", async () => {
+    botonPlay.addEventListener("click", async () => {
       try {
         if (musica.paused) {
           await musica.play();
-          boton.innerText = "🔇 Pausar música";
+          botonPlay.innerHTML = "🔇 Pausar música";
         } else {
           musica.pause();
-          boton.innerText = "🎵 Reproducir música";
+          botonPlay.innerHTML = "🎵 Reproducir música";
         }
       } catch (error) {
         alert("No se pudo reproducir la música: " + error.message);
       }
     });
-
-    // Corazones flotantes
-    const emojis = ['💜', '💙'];
-    for (let i = 0; i < 30; i++) {
-      const emoji = document.createElement('div');
-      emoji.classList.add('emoji');
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + 'vw';
-      emoji.style.top = Math.random() * 100 + 'vh';
-      emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-      document.body.appendChild(emoji);
-      setTimeout(() => emoji.remove(), 10000);
-    }
   </script>
 
 </body>
