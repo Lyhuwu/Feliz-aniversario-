@@ -51,24 +51,28 @@
     }
 
     .boton-musica {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
       padding: 12px 18px;
-      font-size: 1em;
       background: #fff;
       border: 2px solid #ff69b4;
       color: #ff69b4;
       border-radius: 12px;
-      box-shadow: 0 0 10px #ff69b480;
-      z-index: 1000;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      z-index: 1000;
     }
 
+    /* Efecto en escritorio con hover */
     .boton-musica:hover {
-      background-color: #ffe6f0;
-      color: #d61b78;
+      transform: scale(1.2);  /* Aumenta el tamaño del botón */
+      background-color: #ff69b4;  /* Cambia el fondo a un color llamativo */
+      color: white;  /* Cambia el texto a blanco */
+    }
+
+    /* Efecto en dispositivos móviles cuando el botón es tocado */
+    .boton-musica:active {
+      transform: scale(1.1);  /* Aumenta ligeramente el tamaño */
+      background-color: #ff69b4;  /* Cambia el fondo */
+      color: white;  /* Cambia el color del texto */
     }
 
     .emoji {
@@ -83,6 +87,7 @@
       from { transform: translateY(100vh); opacity: 1; }
       to   { transform: translateY(-20vh); opacity: 0; }
     }
+
   </style>
 </head>
 <body>
@@ -134,4 +139,3 @@
 
 </body>
 </html>
-
