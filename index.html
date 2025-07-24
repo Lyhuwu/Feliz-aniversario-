@@ -50,6 +50,7 @@
       }
     }
 
+    /* Estilo para el botón de música */
     .boton-musica {
       padding: 12px 18px;
       background: #007bff;  /* Color azul */
@@ -59,6 +60,10 @@
       cursor: pointer;
       transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
       z-index: 1000;
+      position: fixed;
+      bottom: 20px;  /* Poner en la parte inferior */
+      left: 50%;
+      transform: translateX(-50%); /* Centrar horizontalmente */
     }
 
     /* Efecto en escritorio con hover */
@@ -74,10 +79,12 @@
       color: white;  /* Cambia el color del texto */
     }
 
+    /* Estilo para el botón de playlist */
     .boton-playlist {
       position: fixed;
-      bottom: 80px;
-      right: 20px;
+      bottom: 80px;  /* Un poco más arriba que el de música */
+      left: 50%;
+      transform: translateX(-50%);
       padding: 12px 18px;
       background: #fff;
       border: 2px solid #ff69b4;
@@ -88,6 +95,7 @@
       z-index: 1000;
     }
 
+    /* Efecto hover para el botón de la playlist */
     .boton-playlist:hover {
       background-color: #ff69b4;
       color: white;
