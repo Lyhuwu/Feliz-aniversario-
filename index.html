@@ -52,9 +52,9 @@
 
     .boton-musica {
       padding: 12px 18px;
-      background: #fff;
-      border: 2px solid #ff69b4;
-      color: #ff69b4;
+      background: #007bff;  /* Color azul */
+      border: 2px solid #0056b3;
+      color: white;
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
@@ -64,15 +64,33 @@
     /* Efecto en escritorio con hover */
     .boton-musica:hover {
       transform: scale(1.2);  /* Aumenta el tamaño del botón */
-      background-color: #ff69b4;  /* Cambia el fondo a un color llamativo */
-      color: white;  /* Cambia el texto a blanco */
+      background-color: #0056b3;  /* Cambia el fondo a un azul más oscuro */
     }
 
     /* Efecto en dispositivos móviles cuando el botón es tocado */
     .boton-musica:active {
       transform: scale(1.1);  /* Aumenta ligeramente el tamaño */
-      background-color: #ff69b4;  /* Cambia el fondo */
+      background-color: #0056b3;  /* Cambia el fondo */
       color: white;  /* Cambia el color del texto */
+    }
+
+    .boton-playlist {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      padding: 12px 18px;
+      background: #fff;
+      border: 2px solid #ff69b4;
+      color: #ff69b4;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .boton-playlist:hover {
+      background-color: #ff69b4;
+      color: white;
     }
 
     .emoji {
@@ -103,7 +121,13 @@
   <!-- ✅ AUDIO CON RUTA CORRECTA -->
   <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" loop></audio>
 
+  <!-- Botón de música -->
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
+
+  <!-- Botón para la playlist de YouTube -->
+  <a href="https://youtube.com/playlist?list=PL8XJYWxEU8h_twQ8v3pUdNLdPhLtG53Ld&si=gJdB6Ci00JJh2-Ej" target="_blank">
+    <button class="boton-playlist">Para ti mi vida preciosa<3</button>
+  </a>
 
   <script>
     const musica = document.getElementById("musica");
