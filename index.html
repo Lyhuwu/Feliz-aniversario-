@@ -14,7 +14,14 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Botón inferior derecho */
+    /* Kinopio embebido */
+    .kinopio-container {
+      width: 100%;
+      height: 90vh;
+      border: none;
+    }
+
+    /* Botón de música */
     #botonMusica {
       position: fixed;
       bottom: 20px;
@@ -48,7 +55,7 @@
       transition: opacity 2s ease;
     }
 
-    /* Corazones animados */
+    /* Corazones flotantes */
     .emoji {
       position: absolute;
       bottom: 0;
@@ -76,6 +83,14 @@
 </head>
 <body>
 
+  <!-- Kinopio embebido -->
+  <iframe 
+    class="kinopio-container"
+    src="https://kinopio.club/embed/heheheheuwu-copy-VpD_KKGvC0l9ILCYEJyvX"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
   <!-- Reproductor invisible -->
   <audio id="musica" loop>
     <source src="music/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" type="audio/mpeg">
@@ -88,7 +103,7 @@
   <!-- Mensaje de canción -->
   <div id="mensajeCancion">La canción que estás escuchando es "If I Ain't Got You" de Alicia Keys <3</div>
 
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
     const musica = document.getElementById("musica");
     const botonPlay = document.getElementById("botonMusica");
@@ -131,7 +146,7 @@
         emoji.style.animation = 'flotar 10s linear forwards';
       });
 
-      // Eliminar del DOM después de 10 segundos
+      // Eliminar después de 10s
       setTimeout(() => {
         if (emoji && emoji.parentElement) emoji.remove();
       }, 10000);
@@ -141,3 +156,4 @@
   </script>
 </body>
 </html>
+
