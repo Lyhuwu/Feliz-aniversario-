@@ -53,11 +53,11 @@
 
     .boton-musica {
       position: fixed;
-      bottom: 20px;
+      bottom: 60px;
       left: 50%;
       transform: translateX(-50%);
       padding: 12px 18px;
-      background-color: #ff69b4;
+      background-color: #2980b9;
       color: white;
       border: none;
       border-radius: 12px;
@@ -65,23 +65,44 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       z-index: 1000;
-      margin-top: 10px;
     }
 
     .boton-musica:hover {
-      background-color: #ff3385;
+      background-color: #1f6391;
     }
 
-    /* Imagen del gatito encima del botón */
-    .gatito {
-      position: absolute;
-      top: -40px;  /* Ajusta la posición vertical para que esté justo encima del botón */
+    .mensaje-cancion {
+      position: fixed;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      width: 46px; /* Aumento del 15% respecto al tamaño anterior (40px) */
-      z-index: 2; /* Asegura que el gatito quede encima del botón */
+      color: #fff;
+      font-size: 1em;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      z-index: 1000;
     }
 
+    .emoji {
+      position: absolute;
+      animation: flotar 10s linear forwards;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        bottom: -30px;
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -94,21 +115,23 @@
     <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=92"></iframe>
   </div>
 
-  <!-- ✅ AUDIO CON RUTA CORRECTA (sin controles) -->
+  <!-- Audio -->
   <audio id="musica">
     <source src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" type="audio/mp3">
     Tu navegador no soporta el elemento de audio.
   </audio>
-  
-  <!-- Imagen del gatito encima del botón -->
-  <img class="gatito" src="https://raw.githubusercontent.com/Lyhuwu/Feliz-aniversario-/main/uwaaa.png" alt="Gatito">
 
-  <!-- Botón de música -->
+  <!-- Botón azul de música -->
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
+
+  <!-- Mensaje de la canción -->
+  <div class="mensaje-cancion">
+    La canción que estás escuchando es <br><strong>If I Ain't Got You</strong> de Alicia Keys <3
+  </div>
 
   <script>
     const musica = document.getElementById("musica");
-    const botonPlay = document.querySelector(".boton-musica");
+    const botonPlay = document.getElementById("botonMusica");
 
     botonPlay.addEventListener("click", async () => {
       try {
@@ -124,18 +147,24 @@
       }
     });
 
-    // Corazones flotantes (esto está bien, no afecta la música)
+    // Corazones que flotan desde abajo y se desvanecen
     const emojis = ['💜', '💙'];
-    for (let i = 0; i < 30; i++) {
+
+    function lanzarCorazon() {
       const emoji = document.createElement('div');
       emoji.classList.add('emoji');
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       emoji.style.left = Math.random() * 100 + 'vw';
-      emoji.style.top = Math.random() * 100 + 'vh';
+      emoji.style.bottom = '-30px';
       emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
       document.body.appendChild(emoji);
-      setTimeout(() => emoji.remove(), 10000);
+
+      setTimeout(() => {
+        emoji.remove();
+      }, 10000);
     }
+
+    setInterval(lanzarCorazon, 400);
   </script>
 
 </body>
