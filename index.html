@@ -12,6 +12,20 @@
       background: #000;
     }
 
+    .kinopio-embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    iframe {
+      height: 100%;
+      width: 100%;
+      border: none;
+    }
+
     .mensaje-amor {
       position: fixed;
       top: 20%;
@@ -26,7 +40,7 @@
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
       z-index: 999;
-      animation: fadeOut 2s ease-out 20s forwards;
+      animation: fadeOut 2s ease-out 5s forwards;
     }
 
     @keyframes fadeOut {
@@ -42,40 +56,32 @@
       right: 20px;
       padding: 12px 18px;
       font-size: 1em;
-      background: #3498db;
-      border: 2px solid #2980b9;
-      color: white;
+      background: #fff;
+      border: 2px solid #ff69b4;
+      color: #ff69b4;
       border-radius: 12px;
-      box-shadow: 0 0 10px #2980b980;
+      box-shadow: 0 0 10px #ff69b480;
       z-index: 1000;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .boton-musica:hover {
-      background-color: #5dade2;
+      background-color: #ffe6f0;
+      color: #d61b78;
     }
 
     .emoji {
       position: fixed;
       font-size: 2rem;
       pointer-events: none;
-      animation: floatUp 10s linear forwards, fadeOutHeart 10s forwards;
+      animation: floatUp 10s linear forwards, fadeOut 10s forwards;
       z-index: 998;
     }
 
     @keyframes floatUp {
       from { transform: translateY(100vh); opacity: 1; }
       to   { transform: translateY(-20vh); opacity: 0; }
-    }
-
-    @keyframes fadeOutHeart {
-      to { opacity: 0; }
-    }
-
-    .kinopio-embed {
-      width: 100%;
-      height: 420px;
     }
   </style>
 </head>
@@ -85,13 +91,11 @@
     Para mi arrocito, mi amor, mi seyora, mi reina, mi todo
   </div>
 
-  <!-- ✅ TU KINOPIO ACTUAL -->
-  <div class="kinopio-embed" style="height: 420px; width: 100%;">
-    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=100" style="height: 100%; width: 100%; border: 0; border-radius: 6px;">
-    </iframe>
+  <div class="kinopio-embed">
+    <iframe src="https://kinopio.club/embed/?spaceId=uc4CMObDdg2PyhcF9pC-9&zoom=100"></iframe>
   </div>
 
-  <!-- 🎵 AUDIO -->
+  <!-- ✅ AUDIO CON RUTA CORRECTA -->
   <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" loop></audio>
 
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
@@ -114,14 +118,14 @@
       }
     });
 
-    // 💜💙 CORAZONES
+    // Corazones flotantes
     const emojis = ['💜', '💙'];
     for (let i = 0; i < 30; i++) {
       const emoji = document.createElement('div');
       emoji.classList.add('emoji');
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       emoji.style.left = Math.random() * 100 + 'vw';
-      emoji.style.bottom = '-10vh';
+      emoji.style.top = Math.random() * 100 + 'vh';
       emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
       document.body.appendChild(emoji);
       setTimeout(() => emoji.remove(), 10000);
