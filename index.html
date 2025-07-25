@@ -19,6 +19,7 @@
       left: 0;
       height: 100%;
       width: 100%;
+      z-index: 0;
     }
 
     iframe {
@@ -41,7 +42,7 @@
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
       z-index: 999;
-      animation: fadeOut 2s ease-out 5s forwards;
+      animation: fadeOut 2s ease-out 18s forwards;
     }
 
     @keyframes fadeOut {
@@ -53,9 +54,8 @@
 
     .boton-musica {
       position: fixed;
-      bottom: 60px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 30px;
+      right: 20px;
       padding: 12px 18px;
       background-color: #2980b9;
       color: white;
@@ -73,14 +73,14 @@
 
     .mensaje-cancion {
       position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 80px;
+      right: 25px;
       color: #fff;
       font-size: 1em;
       font-family: 'Comic Sans MS', cursive;
-      text-align: center;
+      text-align: right;
       z-index: 1000;
+      max-width: 200px;
     }
 
     .emoji {
@@ -88,18 +88,20 @@
       animation: flotar 10s linear forwards;
       opacity: 0;
       z-index: 0;
+      pointer-events: none;
     }
 
     @keyframes flotar {
       0% {
-        bottom: -30px;
+        transform: translateY(0) scale(1);
         opacity: 1;
       }
       80% {
         opacity: 1;
+        transform: translateY(-80vh) scale(1.2);
       }
       100% {
-        bottom: 100%;
+        transform: translateY(-100vh) scale(1.4);
         opacity: 0;
       }
     }
@@ -107,10 +109,12 @@
 </head>
 <body>
 
+  <!-- Mensaje flotante principal -->
   <div class="mensaje-amor">
     Para mi arrocito, mi amor, mi seyora, mi reina, mi todo
   </div>
 
+  <!-- Kinopio -->
   <div class="kinopio-embed">
     <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=92"></iframe>
   </div>
@@ -121,12 +125,13 @@
     Tu navegador no soporta el elemento de audio.
   </audio>
 
-  <!-- Botón azul de música -->
+  <!-- Botón música -->
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
 
-  <!-- Mensaje de la canción -->
+  <!-- Mensaje de canción -->
   <div class="mensaje-cancion">
-    La canción que estás escuchando es <br><strong>If I Ain't Got You</strong> de Alicia Keys <3
+    La canción que estás escuchando es<br>
+    <strong>If I Ain't Got You</strong> de Alicia Keys <3
   </div>
 
   <script>
@@ -147,7 +152,7 @@
       }
     });
 
-    // Corazones que flotan desde abajo y se desvanecen
+    // Corazones flotantes
     const emojis = ['💜', '💙'];
 
     function lanzarCorazon() {
@@ -157,14 +162,16 @@
       emoji.style.left = Math.random() * 100 + 'vw';
       emoji.style.bottom = '-30px';
       emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      emoji.style.transition = 'transform 10s ease-in-out';
       document.body.appendChild(emoji);
 
+      // Eliminar después de 10 segundos
       setTimeout(() => {
         emoji.remove();
       }, 10000);
     }
 
-    setInterval(lanzarCorazon, 400);
+    setInterval(lanzarCorazon, 600); // Menos frecuencia = más fluido
   </script>
 
 </body>
