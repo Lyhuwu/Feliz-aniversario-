@@ -116,13 +116,20 @@
     <iframe src="https://kinopio.club/embed/?spaceId=1vt1s0WACpnFEipkZpMS_&zoom=100"></iframe>
   </div>
 
+  <!-- Música principal -->
   <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" loop></audio>
+
+  <!-- Sonido de carga completada -->
+  <audio id="campanita" src="https://cdn.pixabay.com/audio/2022/03/15/audio_f08d6f8f48.mp3"></audio>
 
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
 
   <script>
     const musica = document.getElementById("musica");
     const boton = document.getElementById("botonMusica");
+    const iframe = document.querySelector(".kinopio-embed iframe");
+    const mensaje = document.getElementById("mensajeCarga");
+    const campanita = document.getElementById("campanita");
 
     boton.addEventListener("click", async () => {
       try {
@@ -138,7 +145,7 @@
       }
     });
 
-    // Corazones flotantes
+    // Emoji flotantes
     const emojis = ['💜', '💙'];
     for (let i = 0; i < 30; i++) {
       const emoji = document.createElement('div');
@@ -151,12 +158,10 @@
       setTimeout(() => emoji.remove(), 10000);
     }
 
-    // Mensaje de carga del Kinopio
-    const iframe = document.querySelector('.kinopio-embed iframe');
-    const mensaje = document.getElementById('mensajeCarga');
-
-    iframe.addEventListener('load', () => {
-      mensaje.style.display = 'none';
+    // Ocultar mensaje de carga y reproducir campanita
+    iframe.addEventListener("load", () => {
+      mensaje.style.display = "none";
+      campanita.play().catch(() => {}); // Silencio si no puede reproducir aún
     });
   </script>
 
