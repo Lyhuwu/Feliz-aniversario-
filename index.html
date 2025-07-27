@@ -83,23 +83,6 @@
       from { transform: translateY(100vh); opacity: 1; }
       to   { transform: translateY(-20vh); opacity: 0; }
     }
-
-    #mensajeCarga {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #fff0fa;
-      color: #d61b78;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      font-size: 1.6em;
-      padding: 20px 30px;
-      border: 3px solid #ff69b4;
-      border-radius: 18px;
-      box-shadow: 0 0 12px rgba(255, 105, 180, 0.4);
-      z-index: 1001;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
@@ -108,28 +91,18 @@
     Para mi arrocito, mi amor, mi seyora, mi reina, mi todo
   </div>
 
-  <div id="mensajeCarga">
-    Espera a que cargue para que puedas ver,<br>de lo contrario actualice mi bebe 💗
-  </div>
-
   <div class="kinopio-embed">
-    <iframe src="https://kinopio.club/embed/?spaceId=uc4CMObDdg2PyhcF9pC-9&zoom=100"></iframe>
+    <iframe src="https://kinopio.club/embed/?spaceId=uc4CMObDdg2PyhcF9pC-9&zoom=92"></iframe>
   </div>
 
-  <!-- Música principal -->
+  <!-- ✅ AUDIO CON RUTA CORRECTA -->
   <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/if-ain_t-got-you-Alicia-Keys-_Lyrics-Español_Inglés_-SlaterArt.mp3" loop></audio>
-
-  <!-- Sonido de carga completada -->
-  <audio id="campanita" src="https://cdn.pixabay.com/audio/2022/03/15/audio_f08d6f8f48.mp3"></audio>
 
   <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
 
   <script>
     const musica = document.getElementById("musica");
     const boton = document.getElementById("botonMusica");
-    const iframe = document.querySelector(".kinopio-embed iframe");
-    const mensaje = document.getElementById("mensajeCarga");
-    const campanita = document.getElementById("campanita");
 
     boton.addEventListener("click", async () => {
       try {
@@ -145,7 +118,7 @@
       }
     });
 
-    // Emoji flotantes
+    // Corazones flotantes
     const emojis = ['💜', '💙'];
     for (let i = 0; i < 30; i++) {
       const emoji = document.createElement('div');
@@ -157,12 +130,6 @@
       document.body.appendChild(emoji);
       setTimeout(() => emoji.remove(), 10000);
     }
-
-    // Ocultar mensaje de carga y reproducir campanita
-    iframe.addEventListener("load", () => {
-      mensaje.style.display = "none";
-      campanita.play().catch(() => {}); // Silencio si no puede reproducir aún
-    });
   </script>
 
 </body>
